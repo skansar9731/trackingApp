@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Customer Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/customer-login.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <img src="images/Shell logo.png" alt="Shell Logo" class="logo-img">
+                <img src="images/Shell logo.png" alt="Shell Logo" class="logo-img-sm">
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+    <a href="index.html" class="nav-link">
+        <i class="fas fa-user-tie"></i>
+        <span>Admin Login</span>
+    </a>
+    <a href="customer-login.html" class="nav-link">
+        <i class="fas fa-user"></i>
+        <span>Customer Login</span>
+    </a>
+</div>
+        </div>
+    </nav>
+    
+    <div class="login-wrapper">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="images/Shell logo.png" alt="Shell Logo" class="login-logo">
+                <h1>Customer Login</h1>
+            </div>
+            <form id="customerLoginForm" class="login-form">
+                <div class="form-group">
+                    <label for="customerUsername">Username</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="customerUsername" placeholder="Enter your username" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="customerPassword">Password</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="customerPassword" placeholder="Enter your password" required>
+                    </div>
+                </div>
+                <button type="submit" class="login-button">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <p id="customerLoginError" class="error-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <hr class="footer-hr">
+                <p>Address: Shed No. 4, Gat No. 409,<br>
+                Shenolikar Industrial Estate, Ghotawade Road,<br>
+                Bhare, Tal-Mulshi, Pune 412 115.</p>
+                <p><i class="fas fa-phone-alt"></i> +91 7498357643</p>
+                <p><i class="fas fa-envelope"></i> info@shellenclosures.com</p>
+                <p><i class="fas fa-envelope"></i> vishal@shellenclosures.com</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/auth.js"></script>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('show');
+        }
+
+        // Customer login form handler
+        document.getElementById('customerLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('customerUsername').value;
+            const password = document.getElementById('customerPassword').value;
+            
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.username === username && u.password === password && u.role === 'customer');
+            
+            if (user) {
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = 'customer-dashboard.html';
+            } else {
+                const errorElement = document.getElementById('customerLoginError');
+                errorElement.textContent = 'Invalid username or password';
+                errorElement.style.display = 'block';
+                setTimeout(() => {
+                    errorElement.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('SW registered', reg))
+      .catch(err => console.error('SW registration failed', err));
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+/* Bottom navitem start */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    display: none; /* Only shown in mobile */
+}
+
+.bottom-nav-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #777;
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-item.active {
+    color: #fbc100;
+}
+
+.nav-item i {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+@media (max-width: 768px) {
+    .bottom-nav {
+        display: block;
+    }
+
+    .main-content {
+        padding-bottom: 70px;
+    }
+}
+/* Bottom navitem end */
+
+/* Add admin container styles */
+.admin-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f5f7fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+/* Form Styles */
+#customerForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+#customerForm input,
+#customerForm .password-wrapper {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+#customerForm .form-buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#createCustomerBtn, 
+#updateCustomerBtn, 
+#cancelEditBtn, 
+#deleteCustomerBtn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: white;
+}
+
+.create-customer {
+    background-color: #fbc100 !important;
+}
+
+.edit-mode-btn {
+    background-color: #fbc100 !important;
+}
+
+.edit-mode-btn.red {
+    background-color: #e74c3c !important;
+}
+
+/* Customer Selector */
+.customer-selector {
+    margin: 20px 0;
+    width: 100%;
+}
+
+.customer-selector select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.selected-customer-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    margin: 15px 0;
+    border-left: 4px solid #fbc100;
+    font-size: 1rem;
+}
+
+.selected-customer-display strong {
+    font-weight: 600;
+}
+
+.edit-customer-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+     border-radius: 4px;
+    cursor: pointer;
+    color: white !important;
+    font-size: 1rem;
+    background-color: #fbc100 !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .customer-selector select{
+            font-size: 0.9rem;
+    }
+    .selected-customer-display strong {
+    font-size: 14px;
+}
+    #customerForm {
+        grid-template-columns: 1fr;
+    }
+    
+    #customerForm .form-buttons {
+        flex-direction: column;
+    }
+    
+    #customerForm .form-buttons button {
+        width: 100%;
+    }
+    h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+}
+
+@media (max-width: 480px) {
+    .customer-selector select{
+            font-size: 0.9rem;
+    }
+    .admin-container {
+        padding: 10px;
+    }
+    
+    .selected-customer-display {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .edit-customer-btn {
+        align-self: flex-end;
+        margin-top: 10px;
+    }
+}
+.customer-details-view {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border-left: 4px solid #fbc100;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.detail-label {
+    font-weight: bold;
+    width: 120px;
+    color: #555;
+}
+
+.detail-value {
+    flex: 1;
+    padding: 8px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+/* Read-only Customer Details Styles */
+#customerReadOnlyView {
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-left: 4px solid #fbc100;
+}
+
+.customer-details-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.customer-details-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.customer-details-table tr:last-child td {
+  border-bottom: none;
+}
+
+.customer-name-header {
+  font-size: 1.2rem;
+  padding-bottom: 10px;
+  color: #333;
+}

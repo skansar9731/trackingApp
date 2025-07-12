@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/customer-dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <img src="images/Shell logo.png" alt="Shell Logo" class="logo-img">
+                <img src="images/Shell logo.png" alt="Shell Logo" class="logo-img-sm">
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                
+                <a href="customer-dashboard.html" title="Dashboard">
+                    <i class="fas fa-home"></i> <span>Home</span>
+                </a>
+                <a class="notification-bell" id="notificationBell" onclick="window.location.href='notification.html'">
+                    <i class="fas fa-bell"></i> <span>Notifications</span>
+                    <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                </a>
+                <a href="javascript:void(0)" onclick="logout()" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+        <div class="welcome-message">
+        </div>
+        
+        <div class="container">
+            <div class="dashboard-content">
+                <h2>Welcome, <span id="customerName"></span></h2>
+                <div class="dashboard-cards">
+                    <div class="card1">
+                       <span class="stat-label"><i class="fas fa-tasks"></i>Total Pending Orders</span>
+
+                        <span id="activeOrders" class="stat-value">0</span>
+                    </div>
+                    <div class="card2">
+                       <span class="stat-label"><i class="fas fa-clipboard-list"></i>Total Orders</span>
+                        <span id="totalOrders" class="stat-value">0</span>
+                    </div>
+                    <div class="card3">
+                        <span class="stat-label"><i class="fas fa-check-circle"></i>Delivered Orders</span>
+                        <span id="deliveredOrders" class="stat-value">0</span>
+                    </div>
+                </div>
+                <div class="orders-section">
+                    <h2><i class="fas fa-box-open"></i> My Orders</h2>
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Search orders..." class="search-input">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <!-- <div class="date-range">
+                            <label for="startDate">From:</label>
+                            <input type="date" id="startDate" class="date-input">
+                            <label for="endDate">To:</label>
+                            <input type="date" id="endDate" class="date-input">
+                            <button id="exportBtn" class="export-btn"><i class="fas fa-file-excel"></i> Export</button>
+                        </div> -->
+                    </div>
+
+                    <!-- Mobile Card View -->
+                    <div class="orders-cards-container">
+                        <div class="order-cards" id="ordersCards">
+                            <!-- Order cards will be populated here -->
+                        </div>
+                    </div>
+                    <!-- Desktop Table View -->
+                    <div class="orders-table-container">
+                        <table id="ordersTable">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>PO Number</th>
+                                    <th>Project No</th>
+                                    <th>Description</th>
+                                    <th>MOC</th>
+                                    <th>QTY</th>
+                                    <th>Contact Person</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersBody">
+                                <!-- Orders will be populated here -->
+                            </tbody>
+                        </table>
+                        <!-- <div class="pagination-controls">
+                            <div class="pagination-info">
+                                Showing <span id="currentPage">1</span> of <span id="totalPages">1</span> pages
+                            </div>
+                            <div class="pagination-buttons">
+                                <button id="prevPage" class="pagination-btn" title="Previous Page">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button id="nextPage" class="pagination-btn" title="Next Page">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="customer-dashboard.html" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="notification.html" class="nav-item">
+                <i class="fas fa-bell"></i>
+                <span>Notifications</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <a href="javascript:void(0)" onclick="logout()" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </nav>
+  <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <hr class="footer-hr">
+                <p>Address: Shed No. 4, Gat No. 409,<br>
+                    Shenolikar Industrial Estate, Ghotawade Road,<br>
+                    Bhare, Tal-Mulshi, Pune 412 115.</p>
+                <p><i class="fas fa-phone-alt"></i> +91 7498357643</p>
+                <p><i class="fas fa-envelope"></i> info@shellenclosures.com</p>
+                <p><i class="fas fa-envelope"></i> vishal@shellenclosures.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('show');
+        }
+
+        function logout() {
+            sessionStorage.removeItem('currentUser');
+            window.location.href = 'customer-login.html';
+        }
+
+        // Check if user is logged in
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        if (!currentUser) {
+            window.location.href = 'customer-login.html';
+        }
+
+        // Display user info
+        document.getElementById('customerName').textContent = currentUser.username;
+
+        // Function to format date to dd/mm/yyyy format
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+
+            let date;
+            if (typeof dateString === 'string') {
+                date = new Date(dateString);
+                if (isNaN(date.getTime())) {
+                    const parts = dateString.split('/');
+                    if (parts.length === 3) {
+                        const day = parseInt(parts[0], 10);
+                        const month = parseInt(parts[1], 10) - 1;
+                        const year = parseInt(parts[2], 10);
+                        date = new Date(year, month, day);
+                    }
+                }
+            } else if (dateString instanceof Date) {
+                date = dateString;
+            }
+
+            if (isNaN(date.getTime())) return 'N/A';
+
+            return date.getDate().toString().padStart(2, '0') + '/' +
+                (date.getMonth() + 1).toString().padStart(2, '0') + '/' +
+                date.getFullYear();
+        }
+
+        // Function to format status with color
+        function getStatusClass(status) {
+            const statusMap = {
+                'Order Booked': 'status-order-booked',
+                'Design': 'status-design',
+                'Assembly': 'status-assembly',
+                'Production': 'status-production',
+                'Quality Check': 'status-quality-check',
+                'Ready for dispatch': 'status-ready-dispatch',
+                'Dispatched': 'status-dispatched',
+                'Delivered': 'status-delivered'
+            };
+            return statusMap[status] || 'status-pending';
+        }
+
+        // Function to refresh orders table
+        function refreshOrdersTable() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const userOrders = orders.filter(order => order.customerId === currentUser.id);
+
+            // Sort orders by date (newest first)
+            userOrders.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
+
+            // Update statistics
+            document.getElementById('activeOrders').textContent =
+                userOrders.filter(o => o.status !== 'Delivered' && o.status !== 'Cancelled').length;
+            document.getElementById('totalOrders').textContent = userOrders.length;
+            document.getElementById('deliveredOrders').textContent =
+                userOrders.filter(o => o.status === 'Delivered').length;
+
+
+            // Populate table
+            const ordersBody = document.getElementById('ordersBody');
+            ordersBody.innerHTML = '';
+
+            userOrders.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td data-label="Date">${formatDate(order.date)}</td>
+                    <td data-label="PO Number">${order.poNumber}</td>
+                    <td data-label="Project No">${order.projectNo || 'N/A'}</td>
+                    <td data-label="Description">${order.description || 'N/A'}</td>
+                    <td data-label="MOC">${order.moc || 'N/A'}</td>
+                    <td data-label="QTY">${order.quantity || 'N/A'}</td>
+                    <td data-label="Contact Person">${order.contactPerson || 'N/A'}</td>
+                    <td data-label="Status" class="${getStatusClass(order.status)}">
+                    ${order.status}
+                </td>
+                `;
+                ordersBody.appendChild(row);
+            });
+        }
+
+        // Initialize orders table
+        refreshOrdersTable();
+
+        // Check for updates every 5 seconds
+        setInterval(refreshOrdersTable, 5000);
+    </script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('SW registered', reg))
+                .catch(err => console.error('SW registration failed', err));
+        }
+    </script>
+</body>
+
+</html>

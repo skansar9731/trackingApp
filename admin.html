@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <img src="images/Shell logo.png" alt="Shell Logo" class="logo-img">
+                <img src="images/Shell logo.png" alt="Shell Logo" class="logo-img-sm">
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                 <a href="admin.html" title="Dashboard">
+                    <i class="fas fa-home"></i> <span>Home</span>
+                </a>
+                 <a href="create-customer.html" title="Dashboard">
+                    <i class="fas fa-user-plus"></i> <span>Customers</span>
+                </a>
+                 <a href="create-order.html" title="Dashboard">
+                    <i class="fas fa-cart-plus"></i> <span>Orders</span>
+                </a>
+</a>
+                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </nav>
+    <main class="main-content">
+        <div class="admin-container">
+            <div class="customer-management">
+                <div class="statistics-container">
+                    <div class="stat-item">
+                        <span class="stat-label"><i class="fas fa-tasks"></i>Active Orders</span>
+
+                        <span id="activeOrders" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label"><i class="fas fa-clipboard-list"></i>Total Orders</span>
+                        <span id="totalOrders" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label"><i class="fas fa-check-circle"></i>Delivered Orders</span>
+                        <span id="deliveredOrders" class="stat-value">0</span>
+                    </div>
+                </div>
+                <h2>
+                    <span
+                        style="display:inline-block;width:24px;height:24px;background:conic-gradient(from 180deg at 50% 50%,#ff8c00 0deg,#ffae42 180deg,transparent 360deg);border-radius:50% 50% 0 0;margin-right:8px;"></span>
+                    Shell Entry Point
+                </h2>
+                <form id="customerForm">
+                    <input type="text" id="custName" placeholder="Customer Name" required>
+                    <input type="tel" id="mobile" placeholder="Mobile Number" required>
+                    <input type="text" id="projectNo" placeholder="Project Number">
+                    <input type="text" id="designer" placeholder="Designer">
+                    <input type="text" id="poNumber" placeholder="PO Number">
+                    <input type="date" id="orderDate" placeholder="Order Date">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" placeholder="Password" required>
+                        <span class="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" id="createCustomerBtn" title="Create Customer" class="create-customer">
+                            <span class="button-text">Create Customer</span>
+                            <i class="fas fa-user-plus"></i>
+                        </button>
+                        <button type="button" id="updateCustomerBtn" class="edit-mode-btn" title="Update"
+                            style="display:none">
+                            <span class="button-text">Update</span>
+                            <i class="fas fa-save"></i>
+                        </button>
+
+                        <button type="button" id="cancelEditBtn" class="edit-mode-btn red" title="Cancel"
+                            style="display:none">
+                            <span class="button-text">Cancel</span>
+                            <i class="fas fa-times"></i>
+                        </button>
+
+                        <button type="button" id="deleteCustomerBtn" class="edit-mode-btn red" title="Delete"
+                            style="display:none">
+                            <span class="button-text">Delete</span>
+                            <i class="fas fa-trash"></i>
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <div class="customer-selector">
+                    <select id="customerSelect" class="searchable-select">
+                        <option value="">Select a customer</option>
+                    </select>
+                </div>
+
+
+
+                <div class="selected-customer-display">
+                    <strong>Selected Customer:</strong> <span id="selectedCustomerName">None</span>
+                    <button id="editCustomerBtn" class="edit-customer-btn" title="Edit Customer">
+                        <i class="fas fa-edit "></i>
+                    </button>
+                </div>
+                <div class="search-container">
+                    <button id="addOrderBtn" class="add-order">Add New Order<span><i class="fas fa-cart-plus"></i>
+                        </span></button>
+                    <div class="date-range">
+                        <!-- <label for="startDate">From:</label> -->
+                        <input type="date" id="startDate" class="date-input">
+                        <!-- <label for="endDate">To:</label> -->
+                        <input type="date" id="endDate" class="date-input">
+                        <button id="exportBtn" class="export-btn"><i class="fas fa-file-excel"></i> Export</button>
+                    </div>
+
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search orders..." class="search-input">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="orders-table-container">
+                    <table id="ordersTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>PO Number</th>
+                                <th>Project No</th>
+                                <th>Description</th>
+                                <th>MOC</th>
+                                <th>QTY</th>
+                                <th>Status</th>
+                                <th>Contact Person</th>
+                                <th>Estimated Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersBody">
+                            <!-- Orders will be loaded here -->
+                        </tbody>
+                    </table>
+                    <div class="pagination-controls">
+                        <div class="pagination-info">
+                            <!-- Showing <span id="currentPage">1</span> of <span id="totalPages">1</span> pages -->
+                        </div>
+                        <div class="pagination-buttons">
+                            <button id="prevPage" class="pagination-btn" title="Previous Page">
+                                <i></i>
+                            </button>
+                            <button id="nextPage" class="pagination-btn" title="Next Page">
+                                <i></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+     <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="admin.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="create-customer.html" class="nav-item active">
+                <i class="fas fa-user-plus"></i>
+                <span>Customers</span>
+            </a>
+            <a href="create-order.html" class="nav-item">
+                <i class="fas fa-cart-plus"></i>
+                <span>Orders</span>
+            </a>
+            <a href="javascript:void(0)" onclick="logout()" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </nav>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <hr class="footer-hr">
+                <p>Address: Shed No. 4, Gat No. 409,<br>
+                    Shenolikar Industrial Estate, Ghotawade Road,<br>
+                    Bhare, Tal-Mulshi, Pune 412 115.</p>
+                <p><i class="fas fa-phone-alt"></i> +91 7498357643</p>
+                <p><i class="fas fa-envelope"></i> info@shellenclosures.com</p>
+                <p><i class="fas fa-envelope"></i> vishal@shellenclosures.com</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('show');
+        }
+
+        function logout() {
+            sessionStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        }
+    </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('SW registered', reg))
+      .catch(err => console.error('SW registration failed', err));
+  }
+</script>
+
+</body>
+
+</html>

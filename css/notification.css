@@ -1,0 +1,437 @@
+ :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #fbc100;
+            --danger-color: #e74c3c;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navigation */
+        .navbar {
+            height: -2rem !important;
+            background-color: #fbc100;
+    padding: 5px 4%;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            margin-right: 2rem;
+        }
+
+        .logo-img-sm {
+            display: none;
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-links h2 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+     .nav-links a {
+        cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 0px 0;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .notification-bell {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notification-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Notification Cards */
+        .notifications-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .notification-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            gap: 1rem;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .notification-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification-card.unread {
+            border-left-color: var(--accent-color);
+            background-color: #fef6f6;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .unread .notification-icon {
+            color: var(--accent-color);
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .notification-time {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .notification-message {
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .notification-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .action-btn:hover {
+            text-decoration: underline;
+        }
+
+        .mark-all-read {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #777;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: none;
+            background-color: white;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.5rem 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .bottom-nav-container {
+            display: flex;
+            justify-content: space-around;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #777;
+            text-decoration: none;
+            font-size: 0.7rem;
+        }
+
+        .nav-item.active {
+            color: #fbc100;
+        }
+
+        .nav-item i {
+            font-size: 1.1rem;
+            margin-bottom: 0.0rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column {
+            margin-bottom: 1rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-hr {
+            border: none;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .footer-column p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links h2 {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .logo-img {
+                display: none;
+            }
+
+            .logo-img-sm {
+                display: block;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+               position: fixed;
+    top: 73px;
+    right: -100%; /* Start off-screen to the right */
+    width: 61%; /* Adjust width as needed */
+    max-width: 300px; /* Optional max-width */
+    height: calc(50vh - 61px); /* Full height minus header */
+    background: #fbc100;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    padding: 20px;
+    box-shadow: -5px 0 10px rgba(0,0,0,0.1); /* Shadow on the left side */
+    transition: all 0.3s ease;
+    z-index: 999;
+    overflow-y: auto; /* Enable scrolling if needed */
+            }
+
+            .nav-links.show {
+                right: 0;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .notification-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .bottom-nav {
+                display: block;
+            }
+
+            .footer {
+                padding-bottom: 70px; /* Account for bottom nav */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .notification-card {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .notification-title {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .notification-time {
+                align-self: flex-start;
+            }
+        }

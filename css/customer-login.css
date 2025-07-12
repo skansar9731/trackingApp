@@ -1,0 +1,157 @@
+/* ===== Customer Login Responsive Styles ===== */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px);
+    padding: 2rem 1rem;
+    background-color: #f5f5f5;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header .login-logo {
+    height: 60px;
+    margin-bottom: 1rem;
+}
+
+.login-header h1 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 15px;
+    color: #777;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-with-icon input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+.login-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #fbc100;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-button:hover {
+    background-color: #e8b000;
+    transform: translateY(-2px);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.error-message {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 1.5rem;
+    }
+    
+    .login-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .login-button {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-wrapper {
+        padding: 1rem;
+    }
+    
+    .login-container {
+        padding: 1.25rem;
+    }
+    
+    .login-header .login-logo {
+        height: 50px;
+    }
+    
+    .input-with-icon input {
+        padding: 10px 12px 10px 40px;
+    }
+    
+    .login-form {
+        gap: 1.25rem;
+    }
+}
