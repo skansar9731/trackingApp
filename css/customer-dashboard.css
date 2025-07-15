@@ -10,7 +10,7 @@
 .dashboard-content {
     width: 100%;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0rem;
     box-sizing: border-box;
 }
 
@@ -820,44 +820,61 @@
     /* Higher than regular header */
 }
 
-/* bottom nav for mobile  */
-  .bottom-nav-container {
-            display: flex;
-            justify-content: space-around;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
+/* Bottom navitem start */
  .bottom-nav {
-            display: none;
-            background-color: white;
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 0.5rem 0;
+            background: #fff;
+            border-top: 1px solid #e0e0e0;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            display: none;
         }
-.nav-item {
+
+        .bottom-nav-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            background-color: #eff2f7;
+        }
+
+        .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #777;
+            color: #666;
             text-decoration: none;
-            font-size: 0.7rem;
-            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            flex: 1;
+            padding: 5px 0;
         }
 
         .nav-item.active {
             color: #fbc100;
         }
 
-       .nav-item i {
-            font-size: 1.1rem;
-            margin-bottom: 0.0rem;
+        .nav-item i {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
         }
-        /* Bottom Nav - Mobile */
+
+        .nav-item span {
+            display: block;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .bottom-nav {
+                display: block;
+            }
+            .main-content {
+                padding-bottom: 70px;
+            }
+        }
+        /* Bottom navitem end */   /* Bottom Nav - Mobile */
 @media (max-width: 768px) {
     .bottom-nav {
         display: block;
@@ -868,3 +885,23 @@
         padding-bottom: 70px;
     }
 }
+.top-nav-notification {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .top-nav-notification .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        
+        .bottom-nav .notification-bell {
+            position: relative;
+        }
+        
+        .bottom-nav .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: 20px;
+        }

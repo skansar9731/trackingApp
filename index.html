@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Admin Login</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/customer-login.css"> <!-- Using the same CSS file -->
-   <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/customer-login.css">
+    <link rel="manifest" href="manifest.json">
     <link rel="icon" href="images/shell-icon-192.png" type="image/png">
     <link rel="apple-touch-icon" href="images/shell-icon-192.png">
 
@@ -24,16 +24,16 @@
             <button class="menu-toggle" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </button>
-           <div class="nav-links" id="navLinks">
-    <a href="index.html" class="nav-link">
-        <i class="fas fa-user-tie"></i>
-        <span>Admin Login</span>
-    </a>
-    <a href="customer-login.html" class="nav-link">
-        <i class="fas fa-user"></i>
-        <span>Customer Login</span>
-    </a>
-</div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Admin Login</span>
+                </a>
+                <a href="customer-login.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Customer Login</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -41,13 +41,14 @@
         <div class="login-container">
             <div class="login-header">
                 <img src="images/Shell logo.png" alt="Shell Logo" class="login-logo">
+                <i class="fas fa-user-tie"></i>
                 <h1>Admin Login</h1>
             </div>
             <form id="loginForm" class="login-form">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <div class="input-with-icon">
-                         <i class="fas fa-user-tie"></i>
+                        <i class="fas fa-user-tie"></i>
                         <input type="text" id="username" placeholder="Enter your username" required>
                     </div>
                 </div>
@@ -57,7 +58,7 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" id="password" placeholder="Enter your password" required>
                         <span class="toggle-password">
-                            <!-- <i class="fas fa-eye"></i> -->
+                            <i class="fas fa-eye"></i>
                         </span>
                     </div>
                 </div>
@@ -68,6 +69,22 @@
             </form>
         </div>
     </div>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-user-tie"></i>
+                <span>Admin Login</span>
+            </a>
+            <a href="customer-login.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Customer Login</span>
+            </a>
+           
+            
+        </div>
+    </nav>
 
     <footer class="footer">
         <div class="footer-container">
@@ -103,15 +120,19 @@
                 icon.classList.replace('fa-eye-slash', 'fa-eye');
             }
         });
+
+        function logout() {
+            // Add your logout functionality here
+            console.log('Logout clicked');
+        }
     </script>
- <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(() => console.log('Service Worker registered'))
-      .catch(err => console.error('SW registration failed', err));
-  }
-</script>
-    
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('Service Worker registered'))
+                .catch(err => console.error('SW registration failed', err));
+        }
+    </script>
 </body>
 
 </html>

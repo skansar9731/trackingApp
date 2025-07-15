@@ -1,58 +1,65 @@
 /* Bottom navitem start */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #fff;
-    border-top: 1px solid #ddd;
-    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    display: none; /* Only shown in mobile */
-}
+ .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 1px solid #e0e0e0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+        }
 
-.bottom-nav-container {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-}
+        .bottom-nav-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            background-color: #eff2f7;
+        }
 
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #777;
-    text-decoration: none;
-    font-size: 0.7rem;
-    font-family: 'Poppins', sans-serif;
-}
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            flex: 1;
+            padding: 5px 0;
+        }
 
-.nav-item.active {
-    color: #fbc100;
-}
+        .nav-item.active {
+            color: #fbc100;
+        }
 
-.nav-item i {
-    font-size: 1.1rem;
-    margin-bottom: 0.2rem;
-}
+        .nav-item i {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
 
-@media (max-width: 768px) {
-    .bottom-nav {
-        display: block;
-    }
+        .nav-item span {
+            display: block;
+            white-space: nowrap;
+        }
 
-    .main-content {
-        padding-bottom: 70px;
-    }
-}
-/* Bottom navitem end */
+        @media (max-width: 768px) {
+            .bottom-nav {
+                display: block;
+            }
+            .main-content {
+                padding-bottom: 70px;
+            }
+        }
+        /* Bottom navitem end */
 
 /* Add admin container styles */
 .admin-container {
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
+    /* margin: 20px auto; */
+    padding: 9px;
     background: #f5f7fa;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -99,6 +106,7 @@ h2 {
     color: #666;
 }
 
+
 #customerForm .form-buttons {
     grid-column: 1 / -1;
     display: flex;
@@ -122,6 +130,7 @@ h2 {
     justify-content: center;
     gap: 8px;
     color: white;
+
 }
 
 .create-customer {
@@ -148,6 +157,7 @@ h2 {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
+   
 }
 
 .selected-customer-display {
@@ -155,16 +165,19 @@ h2 {
     align-items: center;
     gap: 10px;
     padding: 12px 15px;
-    background: #f8f9fa;
+    background: white;
     border-radius: 4px;
     margin: 15px 0;
     border-left: 4px solid #fbc100;
     font-size: 1rem;
+    
 }
 
 .selected-customer-display strong {
     font-weight: 600;
+ 
 }
+
 
 .edit-customer-btn {
     margin-left: auto;
@@ -175,10 +188,42 @@ h2 {
     color: white !important;
     font-size: 1rem;
     background-color: #fbc100 !important;
+    padding: 5px;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+    #createCustomerBtn, 
+#updateCustomerBtn, 
+#cancelEditBtn, 
+#deleteCustomerBtn {
+       padding: 18px;
+}
+    /* Increase height of Select2 input */
+.select2-container--default .select2-selection--single {
+    height: 3.5rem !important;
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+
+/* Optional: adjust arrow alignment */
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100%;
+}
+
+/* Optional: fix text alignment */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 35px !important;
+}
+
+    #customerForm input,
+#customerForm .password-wrapper {
+    height: 3.5rem;
+}
     .customer-selector select{
             font-size: 0.9rem;
     }
@@ -191,6 +236,7 @@ h2 {
     
     #customerForm .form-buttons {
         flex-direction: column;
+        height: 3.5rem;
     }
     
     #customerForm .form-buttons button {
@@ -221,7 +267,7 @@ h2 {
     
     .edit-customer-btn {
         align-self: flex-end;
-        margin-top: 10px;
+        margin-top: -48px;
     }
 }
 .customer-details-view {

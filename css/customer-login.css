@@ -28,10 +28,26 @@
     margin-bottom: 1rem;
 }
 
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
 .login-header h1 {
     color: #2c3e50;
     font-size: 1.8rem;
     margin: 0;
+}
+
+.login-header .fa-user-tie {
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+.login-header .fa-user {
+    font-size: 1.5rem;
+    color: #2c3e50;
 }
 
 .login-form {
@@ -44,6 +60,8 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
 .form-group label {
@@ -51,11 +69,18 @@
     color: #555;
     font-size: 0.95rem;
 }
+.input-with-icon i.fa-user-tie {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    font-size: 1rem;
+}
 
 .input-with-icon {
     position: relative;
-    display: flex;
-    align-items: center;
+    width: 100%;
 }
 
 .input-with-icon i {
@@ -64,13 +89,67 @@
     color: #777;
 }
 
+.input-with-icon i.fa-lock {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    z-index: 1;
+}
+
 .input-with-icon input {
     width: 100%;
-    padding: 12px 15px 12px 45px;
+    padding: 12px 45px 12px 45px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+.toggle-password {
+    position: absolute;
+    right: 45px;
+    top: 35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+    z-index: 2;
+    background: none;
+    border: none;
+    padding: 0;
+}
+.toggle-password i {
+    font-size: 1rem;
+}
+@media (max-width: 768px) {
+    .input-with-icon input {
+        padding: 10px 40px 10px 40px; /* Reduced padding for mobile */
+        font-size: 0.9rem;
+        height: 3.5rem;
+    }
+    
+    .input-with-icon i.fa-lock {
+        left: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .toggle-password {
+        right: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-with-icon input {
+        padding: 8px 35px 8px 35px; /* Further reduced padding for small mobile */
+    }
+    
+    .input-with-icon i.fa-lock {
+        left: 10px;
+    }
+    
+    .toggle-password {
+        right: 40px;
+    }
 }
 
 .input-with-icon input:focus {
@@ -80,6 +159,7 @@
 }
 
 .login-button {
+    height: 3.5rem;
     width: 100%;
     padding: 14px;
     background-color: #fbc100;
@@ -155,3 +235,58 @@
         gap: 1.25rem;
     }
 }
+/* Bottom navitem start */
+ .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 1px solid #e0e0e0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+        }
+
+        .bottom-nav-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            background-color: #eff2f7;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            flex: 1;
+            padding: 5px 0;
+        }
+
+        .nav-item.active {
+            color: #fbc100;
+        }
+
+        .nav-item i {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .nav-item span {
+            display: block;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .bottom-nav {
+                display: block;
+            }
+            .main-content {
+                padding-bottom: 70px;
+            }
+        }
+        /* Bottom navitem end */
